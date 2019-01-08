@@ -257,7 +257,7 @@
         Note that the events are always selectable (drop shadow and higher z-index), even when uneditable.#[br]
         Disabled views: years, year, month.
       v-card.green-theme.my-2.ma-auto.main-content
-        vue-cal.vuecal--green-theme(selected-date="2018-11-19" :time-from="7 * 60" :time-to="23 * 60" :disable-views="['years', 'year', 'month']" hide-weekends :events="events")
+        vue-cal.vuecal--green-theme(selected-date="2018-01-01" :time-from="7 * 60" :time-to="23 * 60" :disable-views="['years', 'year', 'month']" hide-weekends :events="events")
       sshpre(language="html-vue" label="Vue Template").
         &lt;vue-cal selected-date="2018-11-19"
                  :time-from="7 * 60"
@@ -420,12 +420,11 @@
         Only week view is enabled here.#[br]
         Vue Cal emits events on calendar event change, read more about it in the #[strong # Vue Cal emitted events] example.
       v-card.green-theme.my-2.ma-auto.main-content
-        vue-cal.vuecal--green-theme.vuecal--full-height-delete(selected-date="2018-11-19" :time-from="10 * 60" :time-to="23 * 60" :disable-views="['years', 'year', 'month', 'day']" hide-view-selector hide-weekends editable-events :events="events")
+        vue-cal.vuecal--green-theme.vuecal--full-height-delete(selected-date="2019-01-01" :time-from="10 * 60" :time-to="23 * 60" hide-weekends editable-events :events="events")
       sshpre(language="html-vue" label="Vue Template").
-        &lt;vue-cal selected-date="2018-11-19"
+        &lt;vue-cal selected-date="2019-01-01"
                  :time-from="10 * 60"
                  :time-to="23 * 60"
-                 :disable-views="['years', 'year', 'month', 'day']"
                  hide-view-selector
                  hide-weekends
                  editable-events
@@ -1178,6 +1177,47 @@ const events = [
     content: '<i class="v-icon material-icons">local_play</i>',
     class: 'leisure',
     split: 1
+  },
+  {
+    start: '2019-01-01 11:00',
+    end: '2019-01-01 15:00',
+    title: 'Normal event',
+    class: 'leisure'
+  },
+  {
+    start: '2018-12-26 11:00',
+    end: '2019-01-01 15:00',
+    title: 'Multi day event starting before selection',
+    class: 'leisure',
+    allDay: true
+  },
+  {
+    start: '2019-01-01 11:00',
+    end: '2019-01-01 15:00',
+    title: 'One day event',
+    class: 'leisure',
+    allDay: true
+  },
+  {
+    start: '2019-01-01 11:00',
+    end: '2019-01-02 15:00',
+    title: 'Two day event',
+    class: 'leisure',
+    allDay: true
+  },
+  {
+    start: '2019-01-02 11:00',
+    end: '2019-01-05 15:00',
+    title: 'Multi day event',
+    class: 'leisure',
+    allDay: true
+  },
+  {
+    start: '2019-01-03 11:00',
+    end: '2019-01-03 15:00',
+    title: 'One day event 2',
+    class: 'leisure',
+    allDay: true
   }
 ]
 

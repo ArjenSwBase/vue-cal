@@ -17,6 +17,16 @@
           span(v-if="heading.label4") &nbsp;
           span(v-if="heading.label4") {{ heading.label4 }}
 
+      .vuecal_flex.vuecal__weekdays-headings(v-if="['week', 'day'].indexOf(view.id) > -1 && viewHeadings.length" :style="`padding-left: 0; display: flex;`")
+        div(style="min-width: 100%")
+          .vuecal__bg.vuecal__allday(style="height: 100%;")
+            .vuecal__time-column(v-if="time && ['week', 'day'].indexOf(view.id) > -1" style="height: 100%;")
+              .vuecal__time-cell(:style="`min-height: ${timeCellHeight}px; height: 100%;`") {{ texts.allDay }}
+
+            .vuecal__flex.vuecal__cells(grow)
+              .vuecal__cell(style="height: auto;" v-for="(heading, i) in viewHeadings" :key="i")
+                vuecal-allday-cell(v-for="(event, cell_i) in allDayEvents[i]" :key="cell_i" :event="event")
+
     .vuecal__flex.vuecal__body(grow)
       div(:class="{ vuecal__flex: !hasTimeColumn }" style="min-width: 100%")
         .vuecal__bg(grow)
@@ -38,12 +48,16 @@
 </template>
 
 <script>
-import { now, isDateToday, getPreviousMonday, getDaysInMonth, formatDate, formatTime } from './date-utils'
+import { now, isDateToday, getPreviousMonday, getDaysInMonth, formatDate, formatTime, daysBetween } from './date-utils'
 import Cell from './cell'
+import AllDayCell from './allday-cell'
 
 export default {
   name: 'vue-cal',
-  components: { 'vuecal-cell': Cell },
+  components: {
+    'vuecal-cell': Cell,
+    'vuecal-allday-cell': AllDayCell
+  },
   props: {
     locale: {
       type: String,
@@ -657,6 +671,7 @@ export default {
       return { minWidth: `${this.minCellWidth}px` || null }
     },
     cssClasses () {
+      console.log(this.allDayEvents)
       return {
         [`vuecal--${this.view.id}-view`]: true,
         [`vuecal--${this.locale}`]: this.locale,
@@ -671,7 +686,129 @@ export default {
         'vuecal--xsmall': this.xsmall,
         'vuecal--no-event-overlaps': this.noEventOverlaps
       }
+    },
+    allDayEvents () {
+      let allDayEvents = []
+
+      if (['week', 'day'].includes(this.view.id) === false) {
+        return allDayEvents
+      }
+
+      let startDate = new Date(this.view.startDate)
+      // Doesn't matter if certain days are not being shown
+      let endDate = new Date(this.view.startDate)
+      if (this.view.id === 'week') {
+        endDate = new Date(this.view.startDate).addDays(7)
+      }
+
+      endDate.setHours(23, 59, 59, 999)
+
+      const eligibleEvents = []
+      Object.values(this.mutableEvents).forEach(el => {
+        eligibleEvents.push(...el.filter(e => {
+          if (!e.allDay) return false
+          const eStartDate = new Date(e.startDate)
+          const eEndDate = new Date(e.endDate)
+          return (startDate <= eStartDate && eStartDate <= endDate) || (startDate <= eEndDate && eEndDate <= endDate)
+        }))
+      })
+
+      eligibleEvents.sort((a, b) => {
+        const aStartDate = new Date(a.startDate)
+        const bStartDate = new Date(b.startDate)
+
+        if (aStartDate < bStartDate) return -1
+        if (aStartDate > bStartDate) return 1
+        return 0
+      })
+
+      eligibleEvents.forEach(e => {
+        const estartDate = new Date(e.startDate)
+        const eEndDate = new Date(e.endDate)
+        let index = estartDate.getDay()
+        // To make sure index is right. Need to shift by one if week starts on monday instead of sunday
+        index -= 1
+        if (index < 0) {
+          index = 6
+        }
+
+        const eventLength = daysBetween(estartDate, eEndDate)
+        const daysBeforeStart = daysBetween(startDate, estartDate, 'ceil', false)
+
+        if (daysBeforeStart > 0) {
+          index -= daysBeforeStart
+        }
+
+        // Figure out depth
+        let depth = 1
+
+          console.log("index + eventLength", index + eventLength)
+
+        for (let i = 0; i < index + eventLength; i++) {
+          let dayList = []
+
+          if (i in allDayEvents) {
+            dayList = allDayEvents[i]
+          }
+
+          let emptySpotFound = false
+          dayList.forEach((item, i) => {
+            if (emptySpotFound) {
+              return
+            }
+
+            if (item) {
+              depth += 1
+            } else {
+              emptySpotFound = true
+            }
+          })
+        }
+
+        for (let i = 0; i < eventLength; i++) {
+          let insertIndex = index + i
+
+          if (insertIndex < 0) {
+            continue
+          }
+
+          let dayList = []
+          if (insertIndex in allDayEvents) {
+            dayList = allDayEvents[insertIndex]
+          }
+
+          for (let d = 0; d < depth; d++) {
+            if (depth - 1 === d) {
+              // Cloning a copy of the event. Is there a better way to clone? I don't want memory references
+              dayList[d] = JSON.parse(JSON.stringify(e))
+
+              console.log(eventLength);
+
+              if (i === 0 && i === eventLength - 1) {
+                dayList[d].part = 'complete'
+              }else if (i === 0) {
+                dayList[d].part = 'start'
+              } else if (i === eventLength - 1) {
+                dayList[d].part = 'end'
+              } else {
+                dayList[d].part = 'middle'
+              }
+            } else {
+              const currentItem = dayList[d] || null
+
+              if (!currentItem) {
+                dayList[d] = null
+              }
+            }
+          }
+
+          allDayEvents[insertIndex] = dayList
+        }
+      })
+
+      return allDayEvents
     }
+
   },
   watch: {
     events: function (events, oldEvents) {
@@ -814,6 +951,14 @@ $weekdays-headings-height: 2.8em;
     flex: 1 1 auto;
     width: 100%;
     margin-bottom: 1px;
+  }
+
+  &__allday {
+    margin-bottom: 0;
+
+    .vuecal__cell:before{
+        border: none;
+    }
   }
 
   &--no-time &__bg {

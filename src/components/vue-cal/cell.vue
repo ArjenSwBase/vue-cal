@@ -358,7 +358,9 @@ export default {
           this.$forceUpdate()// @todo: find a way to avoid this.
         })
 
-        return events
+        return events.filter(event => {
+          return !event.allDay
+        })
       },
       set (events) {
         this.$parent.mutableEvents[this.formattedDate] = events

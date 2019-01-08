@@ -121,3 +121,21 @@ export const formatDate = (date, format = 'yyyy-mm-dd', localizedTexts) => {
     return result !== undefined ? result : contents
   })
 }
+
+export const daysBetween = (d1, d2, round = 'ceil', useAbs = true) => {
+  const ONEDAY = 1000 * 60 * 60 * 24
+  const d1MS = d1.getTime()
+  d2.setHours(23, 59, 59, 999)
+  const d2MS = d2.getTime()
+
+  let differenceMs = 0
+  if (useAbs) {
+    differenceMs = Math.abs(d1MS - d2MS)
+  } else {
+    differenceMs = d1MS - d2MS
+  }
+
+  if (round === 'ceil') return Math.ceil(differenceMs / ONEDAY)
+  if (round === 'floor') return Math.floor(differenceMs / ONEDAY)
+  return Math.round(differenceMs / ONEDAY)
+}

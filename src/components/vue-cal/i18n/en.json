@@ -10,5 +10,6 @@
   "noEvent": "No Event",
   "deleteEvent": "Delete",
   "createEvent": "Create an event",
-  "dateFormat": "DDDD mmmm d{S}, yyyy"
+  "dateFormat": "DDDD mmmm d{S}, yyyy",
+  "allDay": "All day"
 }
