@@ -38,7 +38,7 @@
                        @touchstart="onTouchStart($event, event)")
           .vuecal__event-title(v-if="event.title || event.content")
               | {{ event.startTimeMinutes | formatTime(timeFormat) }}
-              span(v-html="event.title || event.content")
+              span(v-html="' ' + (event.title || event.content)")
 
       div(v-if="view === 'month' && !eventsOnMonthView && events.length")
         slot(name="events-count-month-view" :events="events")
@@ -722,4 +722,10 @@ export default {
     border-left-color: currentColor;
   }
 }
+
+.custom_month_view {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
 </style>
