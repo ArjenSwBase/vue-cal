@@ -36,9 +36,9 @@
                        @mousedown="onMouseDown($event, event)"
                        @contextmenu="onContextMenu($event, event)"
                        @touchstart="onTouchStart($event, event)")
-          .vuecal__event-title(v-if="event.title")
+          .vuecal__event-title(v-if="event.title || event.content")
               | {{ event.startTimeMinutes | formatTime(timeFormat) }}
-              | {{ event.title }}
+              | {{ event.title || event.content }}
 
       div(v-if="view === 'month' && !eventsOnMonthView && events.length")
         slot(name="events-count-month-view" :events="events")
