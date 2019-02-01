@@ -4,7 +4,7 @@
       .split-label(v-if="splits.length" v-html="splits[i - 1].label")
       .vuecal__cell-date(v-if="content" v-html="content")
       .vuecal__no-event(v-if="!events.length && (['week', 'day'].indexOf(view) > -1 || (view === 'month' && eventsOnMonthView))") {{ texts.noEvent }}
-      .vuecal__cell-events(v-if="events.length && (['week', 'day'].indexOf(view) > -1 || (view === 'month' && eventsOnMonthView))")
+      .vuecal__cell-events(v-if="events.length && (['week', 'day'].indexOf(view) > -1)")
         .vuecal__event(:class="eventClasses(event)"
                        v-for="(event, j) in (splits.length ? splitEvents[i] : events)" :key="j"
                        :style="eventStyles(event)"
@@ -26,6 +26,20 @@
           .vuecal__event-resize-handle(v-if="editableEvents && event.startTime && !event.multipleDays.start && !event.multipleDays.middle"
                                        @mousedown="editableEvents && time && onDragHandleMouseDown($event, event)"
                                        @touchstart="editableEvents && time && onDragHandleMouseDown($event, event)")
+      .vuecal__cell-events(v-else-if="events.length && (view === 'month' && eventsOnMonthView)")
+        .vuecal__event(:class="event.classes"
+                       class="custom_month_view"
+                       v-for="(event, j) in (splits.length ? splitEvents[i] : events)" :key="j"
+                       :style="eventStyles(event)"
+                       @mouseenter="onMouseEnter($event, event)"
+                       @mouseleave="onMouseLeave($event, event)"
+                       @mousedown="onMouseDown($event, event)"
+                       @contextmenu="onContextMenu($event, event)"
+                       @touchstart="onTouchStart($event, event)")
+          .vuecal__event-title(v-if="event.title")
+              | {{ event.startTimeMinutes | formatTime(timeFormat) }}
+              | {{ event.title }}
+
       div(v-if="view === 'month' && !eventsOnMonthView && events.length")
         slot(name="events-count-month-view" :events="events")
           span.vuecal__cell-events-count(v-if="events.length") {{ events.length }}
