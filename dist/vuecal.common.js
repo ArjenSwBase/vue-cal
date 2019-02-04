@@ -1464,6 +1464,7 @@ var map = {
 	"./it.json": "eed7",
 	"./ka.json": "acbd",
 	"./nl.json": "b258",
+	"./pl.json": "6079",
 	"./pt-br.json": "89f4",
 	"./ru.json": "a65a",
 	"./sk.json": "a39e",
@@ -1825,6 +1826,13 @@ module.exports = function (that, target, C) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("8580");
+
+/***/ }),
+
+/***/ "6079":
+/***/ (function(module) {
+
+module.exports = {"weekDays":["Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota","Niedziela"],"months":["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"],"years":"Lata","year":"Rok","month":"Miesiąc","week":"Tydzień","day":"Dzień","today":"Dzisiaj","noEvent":"Brak wydarzeń","deleteEvent":"Usuń","createEvent":"Utwórz wydarzenie","dateFormat":"DDDD, d mmmm yyyy"};
 
 /***/ }),
 
@@ -3751,40 +3759,20 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62ddfba7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-cal/index.vue?vue&type=template&id=32c145ba&lang=pug&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal",class:_vm.cssClasses,attrs:{"column":"","lang":_vm.locale}},[_c('div',{staticClass:"vuecal__header"},[(!_vm.hideViewSelector)?_c('ul',{staticClass:"vuecal__flex vuecal__menu"},_vm._l((_vm.views),function(v,id){return (v.enabled)?_c('li',{class:{ active: _vm.view.id === id },on:{"click":function($event){_vm.switchView(id)}}},[_vm._v(_vm._s(v.label))]):_vm._e()}),0):_vm._e(),(!_vm.hideTitleBar)?_c('div',{staticClass:"vuecal__title"},[_c('div',{staticClass:"vuecal__arrow vuecal__arrow--prev",on:{"click":_vm.previous}},[_vm._t("arrowPrev",[_c('i',{staticClass:"angle"})])],2),_vm._t("title",[_c('span',{class:{ clickable: !!_vm.broaderView },on:{"click":function($event){_vm.switchToBroaderView()}}},[_vm._v(_vm._s(_vm.viewTitle))])],{title:_vm.viewTitle,view:_vm.view}),_c('div',{staticClass:"vuecal__arrow vuecal__arrow--next",on:{"click":_vm.next}},[_vm._t("arrowNext",[_c('i',{staticClass:"angle"})])],2)],2):_vm._e(),(_vm.viewHeadings.length && !(_vm.hasSplits && _vm.view.id === 'week'))?_c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.viewHeadings),function(heading,i){return _c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:heading.class,style:(_vm.weekdayCellStyles)},[_vm._l((3),function(j){return _c('span',{key:j},[_vm._v(_vm._s(heading['label' + j]))])}),(heading.label4)?_c('span',[_vm._v(" ")]):_vm._e(),(heading.label4)?_c('span',[_vm._v(_vm._s(heading.label4))]):_vm._e()],2)}),0):_vm._e()]),(!_vm.hideBody)?_c('div',{staticClass:"vuecal__flex vuecal__body",attrs:{"grow":""}},[_c('div',{class:{ vuecal__flex: !_vm.hasTimeColumn },staticStyle:{"min-width":"100%"}},[_c('div',{staticClass:"vuecal__bg",attrs:{"grow":""}},[(_vm.time && ['week', 'day'].indexOf(_vm.view.id) > -1)?_c('div',{staticClass:"vuecal__time-column"},_vm._l((_vm.timeCells),function(cell,i){return _c('div',{key:i,staticClass:"vuecal__time-cell",style:(("height: " + _vm.timeCellHeight + "px"))},[_vm._t("time-cell",[_c('span',{staticClass:"line"},[_vm._v(_vm._s(cell.label))])],{hours:cell.hours,minutes:cell.minutes})],2)}),0):_vm._e(),_c('div',{staticClass:"vuecal__flex vuecal__cells",attrs:{"grow":"","column":_vm.hasSplits && _vm.view.id === 'week'}},[(_vm.hasSplits && _vm.view.id === 'week')?_c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.viewHeadings),function(heading,i){return _c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:heading.class,style:(_vm.weekdayCellStyles)},[_vm._l((3),function(j){return _c('span',{key:j},[_vm._v(_vm._s(heading['label' + j]))])}),(heading.label4)?_c('span',[_vm._v(" ")]):_vm._e(),(heading.label4)?_c('span',[_vm._v(_vm._s(heading.label4))]):_vm._e()],2)}),0):_vm._e(),(_vm.hasSplits)?_c('div',{staticClass:"vuecal__flex",attrs:{"grow":""}},_vm._l((_vm.viewCells),function(cell,i){return _c('vuecal-cell',{key:i,class:cell.class,attrs:{"date":cell.date,"formatted-date":cell.formattedDate,"today":cell.today,"content":cell.content,"splits":_vm.splitDays},nativeOn:{"click":function($event){_vm.selectCell(cell)},"dblclick":function($event){_vm.dblClickToNavigate && _vm.switchToNarrowerView()}}})}),1):_vm._l((_vm.viewCells),function(cell,i){return _c('vuecal-cell',_vm._b({key:i,class:cell.class,attrs:{"date":cell.date,"formatted-date":cell.formattedDate,"today":cell.today,"content":cell.content},nativeOn:{"click":function($event){_vm.selectCell(cell)},"dblclick":function($event){_vm.dblClickToNavigate && _vm.switchToNarrowerView()}},scopedSlots:_vm._u([{key:"events-count-month-view",fn:function(ref){
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62ddfba7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-cal/index.vue?vue&type=template&id=398a3131&lang=pug&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal",class:_vm.cssClasses,attrs:{"column":"","lang":_vm.locale}},[_c('div',{staticClass:"vuecal__header"},[(!_vm.hideViewSelector)?_c('ul',{staticClass:"vuecal__flex vuecal__menu"},_vm._l((_vm.views),function(v,id){return (v.enabled)?_c('li',{class:{ active: _vm.view.id === id },on:{"click":function($event){_vm.switchView(id)}}},[_vm._v(_vm._s(v.label))]):_vm._e()}),0):_vm._e(),(!_vm.hideTitleBar)?_c('div',{staticClass:"vuecal__title"},[_c('div',{staticClass:"vuecal__arrow vuecal__arrow--prev",on:{"click":_vm.previous}},[_vm._t("arrowPrev",[_c('i',{staticClass:"angle"})])],2),_vm._t("title",[_c('span',{class:{ clickable: !!_vm.broaderView },on:{"click":function($event){_vm.switchToBroaderView()}}},[_vm._v(_vm._s(_vm.viewTitle))])],{title:_vm.viewTitle,view:_vm.view}),_c('div',{staticClass:"vuecal__arrow vuecal__arrow--next",on:{"click":_vm.next}},[_vm._t("arrowNext",[_c('i',{staticClass:"angle"})])],2)],2):_vm._e(),(_vm.viewHeadings.length && !(_vm.hasSplits && _vm.view.id === 'week'))?_c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.viewHeadings),function(heading,i){return _c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:heading.class,style:(_vm.weekdayCellStyles)},[_vm._l((3),function(j){return _c('span',{key:j},[_vm._v(_vm._s(heading['label' + j]))])}),(heading.label4)?_c('span',[_vm._v(" ")]):_vm._e(),(heading.label4)?_c('span',[_vm._v(_vm._s(heading.label4))]):_vm._e()],2)}),0):_vm._e()]),(!_vm.hideBody)?_c('div',{staticClass:"vuecal__flex vuecal__body",attrs:{"grow":""}},[_c('div',{class:{ vuecal__flex: !_vm.hasTimeColumn },staticStyle:{"min-width":"100%"}},[_c('div',{staticClass:"vuecal__bg",attrs:{"grow":""}},[(_vm.time && ['week', 'day'].indexOf(_vm.view.id) > -1)?_c('div',{staticClass:"vuecal__time-column"},_vm._l((_vm.timeCells),function(cell,i){return _c('div',{key:i,staticClass:"vuecal__time-cell",style:(("height: " + _vm.timeCellHeight + "px"))},[_vm._t("time-cell",[_c('span',{staticClass:"line"},[_vm._v(_vm._s(cell.label))])],{hours:cell.hours,minutes:cell.minutes})],2)}),0):_vm._e(),_c('div',{staticClass:"vuecal__flex vuecal__cells",attrs:{"grow":"","column":_vm.hasSplits && _vm.view.id === 'week'}},[(_vm.hasSplits && _vm.view.id === 'week')?_c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.viewHeadings),function(heading,i){return _c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:heading.class,style:(_vm.weekdayCellStyles)},[_vm._l((3),function(j){return _c('span',{key:j},[_vm._v(_vm._s(heading['label' + j]))])}),(heading.label4)?_c('span',[_vm._v(" ")]):_vm._e(),(heading.label4)?_c('span',[_vm._v(_vm._s(heading.label4))]):_vm._e()],2)}),0):_vm._e(),(_vm.hasSplits)?_c('div',{staticClass:"vuecal__flex",attrs:{"grow":""}},_vm._l((_vm.viewCells),function(cell,i){return _c('vuecal-cell',{key:i,class:cell.class,attrs:{"date":cell.date,"formatted-date":cell.formattedDate,"today":cell.today,"content":cell.content,"splits":_vm.splitDays},nativeOn:{"click":function($event){_vm.selectCell(cell)},"dblclick":function($event){_vm.dblClickToNavigate && _vm.switchToNarrowerView()}}},[_vm._t("no-event",[_vm._v(_vm._s(_vm.texts.noEvent))],{slot:"no-event"})],2)}),1):_vm._l((_vm.viewCells),function(cell,i){return _c('vuecal-cell',_vm._b({key:i,class:cell.class,attrs:{"date":cell.date,"formatted-date":cell.formattedDate,"today":cell.today,"content":cell.content},nativeOn:{"click":function($event){_vm.selectCell(cell)},"dblclick":function($event){_vm.dblClickToNavigate && _vm.switchToNarrowerView()}},scopedSlots:_vm._u([{key:"events-count-month-view",fn:function(ref){
 var events = ref.events;
-return _c('div',{attrs:{"events":events}},[_vm._t("events-count-month-view",[(events.length)?_c('span',{staticClass:"vuecal__cell-events-count"},[_vm._v(_vm._s(events.length))]):_vm._e()],{events:events})],2)}}])},'vuecal-cell',{ scopedSlots: _vm.$scopedSlots },false))})],2)])])]):_vm._e()])}
+return _c('div',{attrs:{"events":events}},[_vm._t("events-count-month-view",[(events.length)?_c('span',{staticClass:"vuecal__cell-events-count"},[_vm._v(_vm._s(events.length))]):_vm._e()],{events:events})],2)}}])},'vuecal-cell',{ scopedSlots: _vm.$scopedSlots },false),[_vm._t("no-event",[_vm._v(_vm._s(_vm.texts.noEvent))],{slot:"no-event"})],2)})],2)])])]):_vm._e()])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vue-cal/index.vue?vue&type=template&id=32c145ba&lang=pug&
+// CONCATENATED MODULE: ./src/components/vue-cal/index.vue?vue&type=template&id=398a3131&lang=pug&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.small.js
 var es6_string_small = __webpack_require__("f386");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.match.js
 var es6_regexp_match = __webpack_require__("4917");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
-var get_own_property_descriptors = __webpack_require__("5e83");
-var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
-var define_properties = __webpack_require__("d847");
-var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
-var get_own_property_descriptor = __webpack_require__("268f");
-var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
-var get_own_property_symbols = __webpack_require__("e265");
-var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
-var keys = __webpack_require__("a4bb");
-var keys_default = /*#__PURE__*/__webpack_require__.n(keys);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
 var define_property = __webpack_require__("85f2");
@@ -3806,76 +3794,6 @@ function _defineProperty(obj, key, value) {
 
   return obj;
 }
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
-
-
-
-
-
-
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    if (i % 2) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      var ownKeys = keys_default()(source);
-
-      if (typeof get_own_property_symbols_default.a === 'function') {
-        ownKeys = ownKeys.concat(get_own_property_symbols_default()(source).filter(function (sym) {
-          return get_own_property_descriptor_default()(source, sym).enumerable;
-        }));
-      }
-
-      ownKeys.forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else {
-      define_properties_default()(target, get_own_property_descriptors_default()(arguments[i]));
-    }
-  }
-
-  return target;
-}
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
-var is_array = __webpack_require__("a745");
-var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (is_array_default()(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
-  }
-}
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/from.js
-var from = __webpack_require__("774e");
-var from_default = /*#__PURE__*/__webpack_require__.n(from);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js
-var is_iterable = __webpack_require__("c8bb");
-var is_iterable_default = /*#__PURE__*/__webpack_require__.n(is_iterable);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js
-
-
-function _iterableToArray(iter) {
-  if (is_iterable_default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_default()(iter);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js
-
-
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-}
 // EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js
 var object_assign = __webpack_require__("5176");
 var assign_default = /*#__PURE__*/__webpack_require__.n(object_assign);
@@ -3886,6 +3804,10 @@ var parse_int_default = /*#__PURE__*/__webpack_require__.n(parse_int);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.split.js
 var es6_regexp_split = __webpack_require__("28a5");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js
+var is_array = __webpack_require__("a745");
+var is_array_default = /*#__PURE__*/__webpack_require__.n(is_array);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js
 
@@ -3937,6 +3859,92 @@ function _slicedToArray(arr, i) {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
 var es6_regexp_to_string = __webpack_require__("6b54");
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js
+var get_own_property_descriptors = __webpack_require__("5e83");
+var get_own_property_descriptors_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptors);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js
+var define_properties = __webpack_require__("d847");
+var define_properties_default = /*#__PURE__*/__webpack_require__.n(define_properties);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js
+var get_own_property_descriptor = __webpack_require__("268f");
+var get_own_property_descriptor_default = /*#__PURE__*/__webpack_require__.n(get_own_property_descriptor);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js
+var get_own_property_symbols = __webpack_require__("e265");
+var get_own_property_symbols_default = /*#__PURE__*/__webpack_require__.n(get_own_property_symbols);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js
+var keys = __webpack_require__("a4bb");
+var keys_default = /*#__PURE__*/__webpack_require__.n(keys);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js
+
+
+
+
+
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    if (i % 2) {
+      var source = arguments[i] != null ? arguments[i] : {};
+
+      var ownKeys = keys_default()(source);
+
+      if (typeof get_own_property_symbols_default.a === 'function') {
+        ownKeys = ownKeys.concat(get_own_property_symbols_default()(source).filter(function (sym) {
+          return get_own_property_descriptor_default()(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else {
+      define_properties_default()(target, get_own_property_descriptors_default()(arguments[i]));
+    }
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (is_array_default()(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/array/from.js
+var from = __webpack_require__("774e");
+var from_default = /*#__PURE__*/__webpack_require__.n(from);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js
+var is_iterable = __webpack_require__("c8bb");
+var is_iterable_default = /*#__PURE__*/__webpack_require__.n(is_iterable);
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js
+
+
+function _iterableToArray(iter) {
+  if (is_iterable_default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_default()(iter);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find.js
 var es6_array_find = __webpack_require__("7514");
 
@@ -4094,13 +4102,13 @@ var formatDate = function formatDate(date) {
     return result !== undefined ? result : contents;
   });
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62ddfba7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-cal/cell.vue?vue&type=template&id=f374b84e&lang=pug&
-var cellvue_type_template_id_f374b84e_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__cell",class:( _obj = { splitted: _vm.splits.length, 'vuecal__cell--has-events': _vm.events.length }, _obj[_vm.cssClass] = true, _obj ),style:(_vm.cellStyles)},[_vm._l(((_vm.splits.length || 1)),function(i){return _c('div',{staticClass:"vuecal__cell-content",class:_vm.splits.length && ("vuecal__cell-split " + (_vm.splits[i - 1].class))},[(_vm.splits.length)?_c('div',{staticClass:"split-label",domProps:{"innerHTML":_vm._s(_vm.splits[i - 1].label)}}):_vm._e(),(_vm.content)?_c('div',{staticClass:"vuecal__cell-date",domProps:{"innerHTML":_vm._s(_vm.content)}}):_vm._e(),(!_vm.events.length && (['week', 'day'].indexOf(_vm.view) > -1 || (_vm.view === 'month' && _vm.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__no-event"},[_vm._v(_vm._s(_vm.texts.noEvent))]):_vm._e(),(_vm.events.length && (['week', 'day'].indexOf(_vm.view) > -1))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splits.length ? _vm.splitEvents[i] : _vm.events)),function(event,j){return _c('div',{key:j,staticClass:"vuecal__event",class:_vm.eventClasses(event),style:(_vm.eventStyles(event)),on:{"mouseenter":function($event){_vm.onMouseEnter($event, event)},"mouseleave":function($event){_vm.onMouseLeave($event, event)},"mousedown":function($event){_vm.onMouseDown($event, event)},"contextmenu":function($event){_vm.onContextMenu($event, event)},"touchstart":function($event){_vm.onTouchStart($event, event)}}},[(_vm.editableEvents)?_c('div',{staticClass:"vuecal__event-delete",on:{"mousedown":function($event){$event.stopPropagation();$event.preventDefault();_vm.deleteEvent(event)},"touchstart":function($event){$event.stopPropagation();$event.preventDefault();_vm.touchDeleteEvent(event)}}},[_vm._v(_vm._s(_vm.texts.deleteEvent))]):_vm._e(),(_vm.editableEvents && event.title)?_c('div',{staticClass:"vuecal__event-title vuecal__event-title--edit",attrs:{"contenteditable":""},domProps:{"innerHTML":_vm._s(event.title)},on:{"blur":function($event){_vm.onEventTitleBlur($event, event)}}}):(event.title)?_c('div',{staticClass:"vuecal__event-title"},[_vm._v(_vm._s(event.title))]):_vm._e(),(event.startTimeMinutes)?_c('div',{staticClass:"vuecal__event-time"},[_vm._v(_vm._s(_vm._f("formatTime")(event.startTimeMinutes,_vm.timeFormat))),(event.endTimeMinutes)?_c('span',[_vm._v(" - "+_vm._s(_vm._f("formatTime")(event.endTimeMinutes,_vm.timeFormat)))]):_vm._e(),(event.multipleDays.daysCount)?_c('small',{staticClass:"days-to-end"},[_vm._v(" +"+_vm._s(event.multipleDays.daysCount - 1)+_vm._s(_vm.texts.day[0].toLowerCase()))]):_vm._e()]):_vm._e(),(event.content)?_c('div',{staticClass:"vuecal__event-content",domProps:{"innerHTML":_vm._s(event.content)}}):_vm._e(),(_vm.editableEvents && event.startTime && !event.multipleDays.start && !event.multipleDays.middle)?_c('div',{staticClass:"vuecal__event-resize-handle",on:{"mousedown":function($event){_vm.editableEvents && _vm.time && _vm.onDragHandleMouseDown($event, event)},"touchstart":function($event){_vm.editableEvents && _vm.time && _vm.onDragHandleMouseDown($event, event)}}}):_vm._e()])}),0):(_vm.events.length && (_vm.view === 'month' && _vm.eventsOnMonthView))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splits.length ? _vm.splitEvents[i] : _vm.events)),function(event,j){return _c('div',{key:j,staticClass:"vuecal__event custom_month_view",class:event.classes,style:(_vm.eventStyles(event)),on:{"mouseenter":function($event){_vm.onMouseEnter($event, event)},"mouseleave":function($event){_vm.onMouseLeave($event, event)},"mousedown":function($event){_vm.onMouseDown($event, event)},"contextmenu":function($event){_vm.onContextMenu($event, event)},"touchstart":function($event){_vm.onTouchStart($event, event)}}},[(event.title || event.content)?_c('div',{staticClass:"vuecal__event-title"},[_vm._v(_vm._s(_vm._f("formatTime")(event.startTimeMinutes,_vm.timeFormat))),_c('span',{domProps:{"innerHTML":_vm._s(' ' + (event.title || event.content))}})]):_vm._e()])}),0):_vm._e(),(_vm.view === 'month' && !_vm.eventsOnMonthView && _vm.events.length)?_c('div',[_vm._t("events-count-month-view",[(_vm.events.length)?_c('span',{staticClass:"vuecal__cell-events-count"},[_vm._v(_vm._s(_vm.events.length))]):_vm._e()],{events:_vm.events})],2):_vm._e()])}),(_vm.timelineVisible)?_c('div',{staticClass:"vuecal__now-line",style:(("top: " + _vm.todaysTimePosition + "px"))}):_vm._e()],2)
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62ddfba7-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/vue-cal/cell.vue?vue&type=template&id=96342e2e&lang=pug&
+var cellvue_type_template_id_96342e2e_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__cell",class:( _obj = { splitted: _vm.splits.length, 'vuecal__cell--has-events': _vm.events.length }, _obj[_vm.cssClass] = true, _obj ),style:(_vm.cellStyles)},[_vm._l(((_vm.splits.length || 1)),function(i){return _c('div',{staticClass:"vuecal__cell-content",class:_vm.splits.length && ("vuecal__cell-split " + (_vm.splits[i - 1].class))},[(_vm.splits.length)?_c('div',{staticClass:"split-label",domProps:{"innerHTML":_vm._s(_vm.splits[i - 1].label)}}):_vm._e(),(_vm.content)?_c('div',{staticClass:"vuecal__cell-date",domProps:{"innerHTML":_vm._s(_vm.content)}}):_vm._e(),(!_vm.events.length && (['week', 'day'].indexOf(_vm.view) > -1 || (_vm.view === 'month' && _vm.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__no-event"},[_vm._t("no-event",[_vm._v(_vm._s(_vm.texts.noEvent))])],2):_vm._e(),(_vm.events.length && (['week', 'day'].indexOf(_vm.view) > -1 || (_vm.view === 'month' && _vm.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splits.length ? _vm.splitEvents[i] : _vm.events)),function(event,j){return _c('div',{key:j,staticClass:"vuecal__event",class:_vm.eventClasses(event),style:(_vm.eventStyles(event)),on:{"mouseenter":function($event){_vm.onMouseEnter($event, event)},"mouseleave":function($event){_vm.onMouseLeave($event, event)},"mousedown":function($event){_vm.onMouseDown($event, event)},"contextmenu":function($event){_vm.onContextMenu($event, event)},"touchstart":function($event){_vm.onTouchStart($event, event)}}},[(_vm.editableEvents)?_c('div',{staticClass:"vuecal__event-delete",on:{"mousedown":function($event){$event.stopPropagation();$event.preventDefault();_vm.deleteEvent(event)},"touchstart":function($event){$event.stopPropagation();$event.preventDefault();_vm.touchDeleteEvent(event)}}},[_vm._v(_vm._s(_vm.texts.deleteEvent))]):_vm._e(),(_vm.editableEvents && event.title)?_c('div',{staticClass:"vuecal__event-title vuecal__event-title--edit",attrs:{"contenteditable":""},domProps:{"innerHTML":_vm._s(event.title)},on:{"blur":function($event){_vm.onEventTitleBlur($event, event)}}}):(event.title)?_c('div',{staticClass:"vuecal__event-title"},[_vm._v(_vm._s(event.title))]):_vm._e(),(event.startTimeMinutes && !(_vm.view === 'month' && _vm.eventsOnMonthView === 'short'))?_c('div',{staticClass:"vuecal__event-time"},[_vm._v(_vm._s(_vm._f("formatTime")(event.startTimeMinutes,_vm.timeFormat))),(event.endTimeMinutes)?_c('span',[_vm._v(" - "+_vm._s(_vm._f("formatTime")(event.endTimeMinutes,_vm.timeFormat)))]):_vm._e(),(event.multipleDays.daysCount)?_c('small',{staticClass:"days-to-end"},[_vm._v(" +"+_vm._s(event.multipleDays.daysCount - 1)+_vm._s(_vm.texts.day[0].toLowerCase()))]):_vm._e()]):_vm._e(),(event.content && !(_vm.view === 'month' && _vm.eventsOnMonthView === 'short'))?_c('div',{staticClass:"vuecal__event-content",domProps:{"innerHTML":_vm._s(event.content)}}):_vm._e(),(_vm.editableEvents && event.startTime && !event.multipleDays.start && !event.multipleDays.middle && _vm.view !== 'month')?_c('div',{staticClass:"vuecal__event-resize-handle",on:{"mousedown":function($event){_vm.editableEvents && _vm.time && _vm.onDragHandleMouseDown($event, event)},"touchstart":function($event){_vm.editableEvents && _vm.time && _vm.onDragHandleMouseDown($event, event)}}}):_vm._e()])}),0):(_vm.events.length && (_vm.view === 'month' && _vm.eventsOnMonthView))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splits.length ? _vm.splitEvents[i] : _vm.events)),function(event,j){return _c('div',{key:j,staticClass:"vuecal__event custom_month_view",class:event.classes,style:(_vm.eventStyles(event)),on:{"mouseenter":function($event){_vm.onMouseEnter($event, event)},"mouseleave":function($event){_vm.onMouseLeave($event, event)},"mousedown":function($event){_vm.onMouseDown($event, event)},"contextmenu":function($event){_vm.onContextMenu($event, event)},"touchstart":function($event){_vm.onTouchStart($event, event)}}},[(event.title || event.content)?_c('div',{staticClass:"vuecal__event-title"},[_vm._v(_vm._s(_vm._f("formatTime")(event.startTimeMinutes,_vm.timeFormat))),_c('span',{domProps:{"innerHTML":_vm._s(' ' + (event.title || event.content))}})]):_vm._e()])}),0):_vm._e(),(_vm.view === 'month' && !_vm.eventsOnMonthView && _vm.events.length)?_c('div',[_vm._t("events-count-month-view",[(_vm.events.length)?_c('span',{staticClass:"vuecal__cell-events-count"},[_vm._v(_vm._s(_vm.events.length))]):_vm._e()],{events:_vm.events})],2):_vm._e()])}),(_vm.timelineVisible)?_c('div',{staticClass:"vuecal__now-line",style:(("top: " + _vm.todaysTimePosition + "px"))}):_vm._e()],2)
 var _obj;}
-var cellvue_type_template_id_f374b84e_lang_pug_staticRenderFns = []
+var cellvue_type_template_id_96342e2e_lang_pug_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/vue-cal/cell.vue?vue&type=template&id=f374b84e&lang=pug&
+// CONCATENATED MODULE: ./src/components/vue-cal/cell.vue?vue&type=template&id=96342e2e&lang=pug&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("ac6a");
@@ -4114,6 +4122,7 @@ var web_dom_iterable = __webpack_require__("ac6a");
 
 
 
+//
 //
 //
 //
@@ -4761,8 +4770,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   vue_cal_cellvue_type_script_lang_js_,
-  cellvue_type_template_id_f374b84e_lang_pug_render,
-  cellvue_type_template_id_f374b84e_lang_pug_staticRenderFns,
+  cellvue_type_template_id_96342e2e_lang_pug_render,
+  cellvue_type_template_id_96342e2e_lang_pug_staticRenderFns,
   false,
   null,
   null,
@@ -4786,6 +4795,8 @@ component.options.__file = "cell.vue"
 
 
 
+//
+//
 //
 //
 //
@@ -4946,7 +4957,7 @@ component.options.__file = "cell.vue"
       default: false
     },
     eventsOnMonthView: {
-      type: Boolean,
+      type: [Boolean, String],
       default: false
     }
   },
@@ -5062,8 +5073,12 @@ component.options.__file = "cell.vue"
       if (view) this.switchView(view);
     },
     switchView: function switchView(view) {
+      var _this2 = this;
+
       var date = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      this.view.events = [];
       this.view.id = view;
+      var dateTmp, endTime, formattedDate, dayEvents;
 
       if (!date) {
         date = this.view.selectedDate || this.view.startDate;
@@ -5074,28 +5089,70 @@ component.options.__file = "cell.vue"
         case 'years':
           // Always fill first cell with a multiple of 25 years, E.g. year 2000, or 2025.
           this.view.startDate = new Date(Math.floor(date.getFullYear() / 25) * 25 || 2000, 0, 1);
+          this.view.endDate = new Date(this.view.startDate.getFullYear() + 26, 0, 0);
           break;
 
         case 'year':
           this.view.startDate = new Date(date.getFullYear(), 0, 1);
+          this.view.endDate = new Date(date.getFullYear() + 1, 0, 0);
           break;
 
         case 'month':
           this.view.startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+          this.view.endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+          dateTmp = new Date(this.view.startDate);
+          endTime = this.view.endDate.getTime();
+
+          while (dateTmp.getTime() <= endTime) {
+            var _this$view$events;
+
+            dateTmp = dateTmp.addDays(1);
+            formattedDate = formatDate(dateTmp, 'yyyy-mm-dd', this.texts);
+            dayEvents = this.mutableEvents[formattedDate] || [];
+            if (dayEvents.length) (_this$view$events = this.view.events).push.apply(_this$view$events, _toConsumableArray(dayEvents.map(function (e) {
+              return _this2.cleanupEvent(e);
+            })));
+          }
+
           break;
 
         case 'week':
+          this.view.startDate = date;
+          this.view.endDate = date.addDays(7);
+          dateTmp = new Date(date);
+
+          for (var i = 0; i < 7; i++) {
+            var _this$view$events2;
+
+            formattedDate = formatDate(dateTmp.addDays(i), 'yyyy-mm-dd', this.texts);
+            dayEvents = this.mutableEvents[formattedDate] || [];
+            if (dayEvents.length) (_this$view$events2 = this.view.events).push.apply(_this$view$events2, _toConsumableArray(dayEvents.map(function (e) {
+              return _this2.cleanupEvent(e);
+            })));
+          }
+
+          break;
+
         case 'day':
           this.view.startDate = date;
+          this.view.endDate = date;
+          dayEvents = this.mutableEvents[formatDate(date, 'yyyy-mm-dd', this.texts)] || [];
+          if (dayEvents.length) this.view.events = dayEvents.map(function (e) {
+            return _this2.cleanupEvent(e);
+          });
           break;
       }
 
       if (this.ready) {
-        var params = {
+        var params = _objectSpread({
           view: view,
-          startDate: this.view.startDate
-        };
-        if (view === 'week') params.week = this.view.startDate.getWeek();
+          startDate: this.view.startDate,
+          endDate: this.view.endDate,
+          events: this.view.events
+        }, view === 'week' ? {
+          week: this.view.startDate.getWeek()
+        } : {});
+
         this.$emit('view-change', params);
       }
     },
@@ -5110,7 +5167,7 @@ component.options.__file = "cell.vue"
       return el.classList.contains('vuecal__event') || this.findAncestor(el, 'vuecal__event');
     },
     selectCell: function selectCell(cell) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.view.selectedDate.toString() !== cell.date.toString()) {
         this.view.selectedDate = cell.date;
@@ -5122,7 +5179,7 @@ component.options.__file = "cell.vue"
       else if (this.dblClickToNavigate && 'ontouchstart' in window) {
           this.domEvents.dblTapACell.taps++;
           setTimeout(function () {
-            return _this2.domEvents.dblTapACell.taps = 0;
+            return _this3.domEvents.dblTapACell.taps = 0;
           }, this.domEvents.dblTapACell.timeout);
 
           if (this.domEvents.dblTapACell.taps >= 2) {
@@ -5179,7 +5236,7 @@ component.options.__file = "cell.vue"
     },
     // Object of arrays of events indexed by dates.
     updateMutableEvents: function updateMutableEvents() {
-      var _this3 = this;
+      var _this4 = this;
 
       // eslint-disable-next-line
       this.mutableEvents = {}; // Group events into dates.
@@ -5216,7 +5273,7 @@ component.options.__file = "cell.vue"
         var multipleDays = startDate !== endDate; // Keep the event ids scoped to this calendar instance.
         // eslint-disable-next-line
 
-        var id = "".concat(_this3._uid, "_").concat(_this3.eventIdIncrement++);
+        var id = "".concat(_this4._uid, "_").concat(_this4.eventIdIncrement++);
         event = assign_default()({}, event, {
           id: id,
           startDate: startDate,
@@ -5236,9 +5293,9 @@ component.options.__file = "cell.vue"
           classes: (_classes = {}, _defineProperty(_classes, event.class, true), _defineProperty(_classes, 'vuecal__event--background', event.background), _defineProperty(_classes, 'vuecal__event--multiple-days', multipleDays), _defineProperty(_classes, 'event-start', multipleDays), _classes)
         }); // Make array reactive for future events creations & deletions.
 
-        if (!(event.startDate in _this3.mutableEvents)) _this3.$set(_this3.mutableEvents, event.startDate, []); // eslint-disable-next-line
+        if (!(event.startDate in _this4.mutableEvents)) _this4.$set(_this4.mutableEvents, event.startDate, []); // eslint-disable-next-line
 
-        _this3.mutableEvents[event.startDate].push(event);
+        _this4.mutableEvents[event.startDate].push(event);
 
         if (multipleDays) {
           (function () {
@@ -5277,9 +5334,9 @@ component.options.__file = "cell.vue"
             };
 
             for (var i = 1; i <= datesDiff; i++) {
-              var date = formatDate(new Date(startDate).addDays(i), 'yyyy-mm-dd', _this3.texts);
+              var date = formatDate(new Date(startDate).addDays(i), 'yyyy-mm-dd', _this4.texts);
               eventPieces.push({
-                id: "".concat(_this3._uid, "_").concat(_this3.eventIdIncrement++),
+                id: "".concat(_this4._uid, "_").concat(_this4.eventIdIncrement++),
                 date: date
               });
             }
@@ -5295,14 +5352,16 @@ component.options.__file = "cell.vue"
                 return e.id !== eventPieces[_i - 1].id;
               }))); // Make array reactive for future events creations & deletions.
 
-              if (!(date in _this3.mutableEvents)) _this3.$set(_this3.mutableEvents, date, []);
+              if (!(date in _this4.mutableEvents)) _this4.$set(_this4.mutableEvents, date, []);
 
-              _this3.mutableEvents[date].push(_objectSpread({}, event, {
+              _this4.mutableEvents[date].push(_objectSpread({}, event, {
                 id: eventPieces[_i - 1].id,
                 overlapped: {},
                 overlapping: {},
                 simultaneous: {},
                 linked: linked,
+                // All the dates in the multipleDays object property are related
+                // to the current event piece (only 1 day) not the whole event.
                 multipleDays: {
                   start: false,
                   middle: _i < datesDiff,
@@ -5332,22 +5391,23 @@ component.options.__file = "cell.vue"
         return event;
       });
     },
-    emitWithEvent: function emitWithEvent(eventName, event) {
-      // Delete vue-cal specific props instead of returning a set of props so user
+    // Prepare the event to return it with an emitted event.
+    cleanupEvent: function cleanupEvent(event) {
+      event = _objectSpread({}, event); // Delete vue-cal specific props instead of returning a set of props so user
       // can place whatever they want inside an event and see it returned.
-      var evt = _objectSpread({}, event);
 
-      delete evt.height;
-      delete evt.top;
-      delete evt.overlapped;
-      delete evt.overlapping;
-      delete evt.simultaneous;
-      delete evt.classes; // Return date objects for easy manipulation.
+      var discardProps = ['height', 'top', 'overlapped', 'overlapping', 'simultaneous', 'classes', 'split'];
 
-      var _evt$start$split = evt.start.split(' '),
-          _evt$start$split2 = _slicedToArray(_evt$start$split, 2),
-          date1 = _evt$start$split2[0],
-          time1 = _evt$start$split2[1];
+      for (var prop in event) {
+        if (discardProps.indexOf(prop) > -1) delete event[prop];
+      }
+
+      if (!event.multipleDays.daysCount) delete event.multipleDays; // Return date objects for easy manipulation.
+
+      var _event$start$split3 = event.start.split(' '),
+          _event$start$split4 = _slicedToArray(_event$start$split3, 2),
+          date1 = _event$start$split4[0],
+          time1 = _event$start$split4[1];
 
       var _ref = date1 && date1.split('-') || [0, 0, 0],
           _ref2 = _slicedToArray(_ref, 3),
@@ -5360,12 +5420,12 @@ component.options.__file = "cell.vue"
           h1 = _ref4[0],
           min1 = _ref4[1];
 
-      evt.startDate = new Date(y1, parse_int_default()(m1) - 1, d1, h1, min1);
+      event.startDate = new Date(y1, parse_int_default()(m1) - 1, d1, h1, min1);
 
-      var _evt$end$split = evt.end.split(' '),
-          _evt$end$split2 = _slicedToArray(_evt$end$split, 2),
-          date2 = _evt$end$split2[0],
-          time2 = _evt$end$split2[1];
+      var _event$end$split3 = event.end.split(' '),
+          _event$end$split4 = _slicedToArray(_event$end$split3, 2),
+          date2 = _event$end$split4[0],
+          time2 = _event$end$split4[1];
 
       var _ref5 = date2 && date2.split('-') || [0, 0, 0],
           _ref6 = _slicedToArray(_ref5, 3),
@@ -5378,8 +5438,11 @@ component.options.__file = "cell.vue"
           h2 = _ref8[0],
           min2 = _ref8[1];
 
-      evt.endDate = new Date(y2, parse_int_default()(m2) - 1, d2, h2, min2);
-      this.$emit(eventName, evt);
+      event.endDate = new Date(y2, parse_int_default()(m2) - 1, d2, h2, min2);
+      return event;
+    },
+    emitWithEvent: function emitWithEvent(eventName, event) {
+      this.$emit(eventName, this.cleanupEvent(event));
     }
   },
   created: function created() {
@@ -5413,7 +5476,16 @@ component.options.__file = "cell.vue"
       window.addEventListener(hasTouch ? 'touchend' : 'mouseup', this.onMouseUp);
     }
 
-    this.$emit('ready');
+    var params = _objectSpread({
+      view: this.view.id,
+      startDate: this.view.startDate,
+      endDate: this.view.endDate,
+      events: this.view.events
+    }, this.view.id === 'week' ? {
+      week: this.view.startDate.getWeek()
+    } : {});
+
+    this.$emit('ready', params);
     this.ready = true;
   },
   beforeDestroy: function beforeDestroy() {
@@ -5452,14 +5524,14 @@ component.options.__file = "cell.vue"
       };
     },
     broaderView: function broaderView() {
-      var _this4 = this;
+      var _this5 = this;
 
       var views = keys_default()(this.views);
 
       views = views.slice(0, views.indexOf(this.view.id));
       views.reverse();
       return views.find(function (v) {
-        return _this4.views[v].enabled;
+        return _this5.views[v].enabled;
       });
     },
     hasTimeColumn: function hasTimeColumn() {
@@ -5546,7 +5618,7 @@ component.options.__file = "cell.vue"
       return title;
     },
     viewHeadings: function viewHeadings() {
-      var _this5 = this;
+      var _this6 = this;
 
       var headings = [];
 
@@ -5555,17 +5627,17 @@ component.options.__file = "cell.vue"
         case 'week':
           var todayFound = false;
           headings = this.weekDays.slice(0, this.hideWeekends ? 5 : 7).map(function (cell, i) {
-            var date = _this5.view.startDate.addDays(i); // Only for week view.
+            var date = _this6.view.startDate.addDays(i); // Only for week view.
 
 
-            var isToday = _this5.view.id === 'week' && !todayFound && isDateToday(date) && !todayFound++;
+            var isToday = _this6.view.id === 'week' && !todayFound && isDateToday(date) && !todayFound++;
             return _objectSpread({
-              label1: _this5.locale === 'zh-cn' ? cell.label.substr(0, 2) : cell.label[0],
-              label2: _this5.locale === 'zh-cn' ? cell.label.substr(2) : cell.label.substr(1, 2),
-              label3: _this5.locale === 'zh-cn' ? '' : cell.label.substr(3)
-            }, _this5.view.id === 'week' ? {
+              label1: _this6.locale === 'zh-cn' ? cell.label.substr(0, 2) : cell.label[0],
+              label2: _this6.locale === 'zh-cn' ? cell.label.substr(2) : cell.label.substr(1, 2),
+              label3: _this6.locale === 'zh-cn' ? '' : cell.label.substr(3)
+            }, _this6.view.id === 'week' ? {
               label4: date.getDate()
-            } : {}, {}, _this5.view.id === 'week' ? {
+            } : {}, {}, _this6.view.id === 'week' ? {
               today: isToday
             } : {}, {
               class: {
@@ -5580,7 +5652,7 @@ component.options.__file = "cell.vue"
       return headings;
     },
     viewCells: function viewCells() {
-      var _this6 = this;
+      var _this7 = this;
 
       var cells = [];
       var fromYear = null;
@@ -5594,8 +5666,8 @@ component.options.__file = "cell.vue"
               content: fromYear + i,
               date: new Date(fromYear + i, 0, 1),
               class: {
-                current: fromYear + i === _this6.now.getFullYear(),
-                selected: _this6.view.selectedDate && fromYear + i === _this6.view.selectedDate.getFullYear()
+                current: fromYear + i === _this7.now.getFullYear(),
+                selected: _this7.view.selectedDate && fromYear + i === _this7.view.selectedDate.getFullYear()
               }
             };
           });
@@ -5605,11 +5677,11 @@ component.options.__file = "cell.vue"
           fromYear = this.view.startDate.getFullYear();
           cells = Array.apply(null, Array(12)).map(function (cell, i) {
             return {
-              content: _this6.xsmall ? _this6.months[i].label.substr(0, 3) : _this6.months[i].label,
+              content: _this7.xsmall ? _this7.months[i].label.substr(0, 3) : _this7.months[i].label,
               date: new Date(fromYear, i, 1),
               class: {
-                current: i === _this6.now.getMonth() && fromYear === _this6.now.getFullYear(),
-                selected: i === _this6.view.selectedDate.getMonth() && fromYear === _this6.view.selectedDate.getFullYear()
+                current: i === _this7.now.getMonth() && fromYear === _this7.now.getFullYear(),
+                selected: i === _this7.view.selectedDate.getMonth() && fromYear === _this7.view.selectedDate.getFullYear()
               }
             };
           });
@@ -5642,8 +5714,8 @@ component.options.__file = "cell.vue"
           cells = Array.apply(null, Array(42)).map(function (cell, i) {
             var cellDate = days[i] || new Date(year, month + 1, ++nextMonthDays); // To increase performance skip checking isToday if today already found.
 
-            var isToday = !todayFound && cellDate && cellDate.getDate() === _this6.now.getDate() && cellDate.getMonth() === _this6.now.getMonth() && cellDate.getFullYear() === _this6.now.getFullYear() && !todayFound++;
-            var formattedDate = formatDate(cellDate, 'yyyy-mm-dd', _this6.texts);
+            var isToday = !todayFound && cellDate && cellDate.getDate() === _this7.now.getDate() && cellDate.getMonth() === _this7.now.getMonth() && cellDate.getFullYear() === _this7.now.getFullYear() && !todayFound++;
+            var formattedDate = formatDate(cellDate, 'yyyy-mm-dd', _this7.texts);
             return {
               content: cellDate.getDate(),
               date: cellDate,
@@ -5652,7 +5724,7 @@ component.options.__file = "cell.vue"
               class: {
                 today: isToday,
                 'out-of-scope': cellDate.getMonth() !== month,
-                selected: _this6.view.selectedDate && cellDate.getTime() === selectedDateAtMidnight.getTime()
+                selected: _this7.view.selectedDate && cellDate.getTime() === selectedDateAtMidnight.getTime()
               }
             };
           });
@@ -5670,7 +5742,7 @@ component.options.__file = "cell.vue"
           var firstDayOfWeek = this.view.startDate;
           cells = this.weekDays.slice(0, this.hideWeekends ? 5 : 7).map(function (cell, i) {
             var date = firstDayOfWeek.addDays(i);
-            var formattedDate = formatDate(date, 'yyyy-mm-dd', _this6.texts);
+            var formattedDate = formatDate(date, 'yyyy-mm-dd', _this7.texts);
             var isToday = !todayFound && isDateToday(date) && !todayFound++;
             return {
               date: date,
@@ -5678,7 +5750,7 @@ component.options.__file = "cell.vue"
               today: isToday,
               class: {
                 today: isToday,
-                selected: _this6.view.selectedDate && firstDayOfWeek.addDays(i).getTime() === _this6.view.selectedDate.getTime()
+                selected: _this7.view.selectedDate && firstDayOfWeek.addDays(i).getTime() === _this7.view.selectedDate.getTime()
               }
             };
           });
@@ -5709,7 +5781,7 @@ component.options.__file = "cell.vue"
     cssClasses: function cssClasses() {
       var _ref9;
 
-      return _ref9 = {}, _defineProperty(_ref9, "vuecal--".concat(this.view.id, "-view"), true), _defineProperty(_ref9, "vuecal--".concat(this.locale), this.locale), _defineProperty(_ref9, 'vuecal--no-time', !this.time), _defineProperty(_ref9, 'vuecal--view-with-time', this.hasTimeColumn), _defineProperty(_ref9, 'vuecal--time-12-hour', this['12Hour']), _defineProperty(_ref9, 'vuecal--click-to-navigate', this.clickToNavigate), _defineProperty(_ref9, 'vuecal--hide-weekends', this.hideWeekends), _defineProperty(_ref9, 'vuecal--split-days', this.splitDays.length), _defineProperty(_ref9, 'vuecal--overflow-x', this.minCellWidth), _defineProperty(_ref9, 'vuecal--small', this.small), _defineProperty(_ref9, 'vuecal--xsmall', this.xsmall), _defineProperty(_ref9, 'vuecal--no-event-overlaps', this.noEventOverlaps), _ref9;
+      return _ref9 = {}, _defineProperty(_ref9, "vuecal--".concat(this.view.id, "-view"), true), _defineProperty(_ref9, "vuecal--".concat(this.locale), this.locale), _defineProperty(_ref9, 'vuecal--no-time', !this.time), _defineProperty(_ref9, 'vuecal--view-with-time', this.hasTimeColumn), _defineProperty(_ref9, 'vuecal--time-12-hour', this['12Hour']), _defineProperty(_ref9, 'vuecal--click-to-navigate', this.clickToNavigate), _defineProperty(_ref9, 'vuecal--hide-weekends', this.hideWeekends), _defineProperty(_ref9, 'vuecal--split-days', this.splitDays.length), _defineProperty(_ref9, 'vuecal--overflow-x', this.minCellWidth), _defineProperty(_ref9, 'vuecal--small', this.small), _defineProperty(_ref9, 'vuecal--xsmall', this.xsmall), _defineProperty(_ref9, 'vuecal--no-event-overlaps', this.noEventOverlaps), _defineProperty(_ref9, 'vuecal--events-on-month-view', this.eventsOnMonthView), _defineProperty(_ref9, 'vuecal--short-events', this.view.id === 'month' && this.eventsOnMonthView === 'short'), _ref9;
     }
   },
   watch: {
