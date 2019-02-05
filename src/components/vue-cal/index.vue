@@ -824,7 +824,7 @@ export default {
       return cells
     },
     weekdayCellStyles () {
-      return { minWidth: `${this.minCellWidth}px` || null }
+      return { minWidth: this.view.id === 'week' && this.minCellWidth ? `${this.minCellWidth}px` : null }
     },
     cssClasses () {
       return {
@@ -885,6 +885,10 @@ $weekdays-headings-height: 2.8em;
     &[grow] {
       flex: 1 1 auto;
     }
+
+    &[wrap] {
+      flex-wrap: wrap;
+    }
   }
 
   // Header.
@@ -901,6 +905,7 @@ $weekdays-headings-height: 2.8em;
       font-size: 1.3em;
       border-bottom: 0 solid currentColor;
       cursor: pointer;
+      box-sizing: border-box;
       transition: 0.2s;
     }
 
@@ -1029,7 +1034,6 @@ $weekdays-headings-height: 2.8em;
   // Calendar cells.
   //==================================//
   &__cells {
-    flex-wrap: wrap;
     min-height: 100%;
     margin: 0 1px 1px 0;
 
