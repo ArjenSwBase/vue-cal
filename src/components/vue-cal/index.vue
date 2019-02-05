@@ -42,7 +42,7 @@
               div(slot-scope="{ events }" :events="events" slot="events-count-month-view")
                 slot(:events="events" name="events-count-month-view")
                   span.vuecal__cell-events-count(v-if="events.length") {{ events.length }}
-              slot(slot="no-event" name="no-event") {{ texts.noEvent }}
+              <!--slot(slot="no-event" name="no-event") {{ texts.noEvent }}-->
 </template>
 
 <script>
