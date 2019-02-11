@@ -1,34 +1,29 @@
 <template lang="pug">
-  .vuecal__cell(:class="{ [cssClass]: true, splitted: splits.length, 'vuecal__cell--has-events': events.length }" :style="cellStyles")
-    .vuecal__cell-content(:class="splits.length && `vuecal__cell-split ${splits[i - 1].class}`" v-for="i in (splits.length || 1)")
+  transition-group.vuecal__cell(:class="{ [cssClass]: true, splitted: splits.length, 'vuecal__cell--has-events': events.length }" :style="cellStyles" tag="div" :name="`slide-fade--${transitionDirection}`" :appear="transitions")
+    .vuecal__flex.vuecal__cell-content(:class="splits.length && `vuecal__cell-split ${splits[i - 1].class}`" v-for="i in (splits.length || 1)" :key="transitions ? `${view}-${content}-${i}` : i" column)
       .split-label(v-if="splits.length" v-html="splits[i - 1].label")
       .vuecal__cell-date(v-if="content" v-html="content")
       .vuecal__no-event(v-if="!events.length && (['week', 'day'].indexOf(view) > -1 || (view === 'month' && eventsOnMonthView))")
         slot(name="no-event") {{ texts.noEvent }}
       .vuecal__cell-events(v-if="events.length && (['week', 'day'].indexOf(view) > -1 || (view === 'month' && eventsOnMonthView))")
         .vuecal__event(:class="eventClasses(event)"
-                       v-for="(event, j) in (splits.length ? splitEvents[i] : events)" :key="j"
-                       :style="eventStyles(event)"
-                       @mouseenter="onMouseEnter($event, event)"
-                       @mouseleave="onMouseLeave($event, event)"
-                       @contextmenu="onContextMenu($event, event)"
-                       @touchstart="onTouchStart($event, event)"
-                       @mousedown="onMouseDown($event, event)"
-                       @click="onClick($event, event)"
-                       @dblclick="onDblClick($event, event)")
+                      v-for="(event, j) in (splits.length ? splitEvents[i] : events)" :key="j"
+                      :style="eventStyles(event)"
+                      @mouseenter="onMouseEnter($event, event)"
+                      @mouseleave="onMouseLeave($event, event)"
+                      @contextmenu="onContextMenu($event, event)"
+                      @touchstart="onTouchStart($event, event)"
+                      @mousedown="onMouseDown($event, event)"
+                      @click="onClick($event, event)"
+                      @dblclick="onDblClick($event, event)")
           .vuecal__event-delete(v-if="editableEvents"
                                 @mousedown.stop.prevent="deleteEvent(event)"
                                 @touchstart.stop.prevent="touchDeleteEvent(event)") {{ texts.deleteEvent }}
-          .vuecal__event-title.vuecal__event-title--edit(contenteditable v-if="editableEvents && event.title" @blur="onEventTitleBlur($event, event)" v-html="event.title")
-          .vuecal__event-title(v-else-if="event.title") {{ event.title }}
-          .vuecal__event-time(v-if="event.startTimeMinutes && !(view === 'month' && eventsOnMonthView === 'short')")
-            | {{ event.startTimeMinutes | formatTime(timeFormat) }}
-            span(v-if="event.endTimeMinutes") &nbsp;- {{ event.endTimeMinutes | formatTime(timeFormat) }}
-            small.days-to-end(v-if="event.multipleDays.daysCount") &nbsp;+{{ event.multipleDays.daysCount - 1 }}{{ texts.day[0].toLowerCase() }}
-          .vuecal__event-content(v-if="event.content && !(view === 'month' && eventsOnMonthView === 'short')" v-html="event.content")
+          slot(:event="event" :view="view" name="event-renderer")
           .vuecal__event-resize-handle(v-if="editableEvents && event.startTime && !event.multipleDays.start && !event.multipleDays.middle && view !== 'month'"
-                                       @mousedown="editableEvents && time && onDragHandleMouseDown($event, event)"
-                                       @touchstart="editableEvents && time && onDragHandleMouseDown($event, event)")
+                                      @mousedown="editableEvents && time && onDragHandleMouseDown($event, event)"
+                                      @touchstart="editableEvents && time && onDragHandleMouseDown($event, event)")
+
       .vuecal__cell-events(v-else-if="events.length && (view === 'month' && eventsOnMonthView)")
         .vuecal__event(:class="event.classes"
                        class="custom_month_view"
@@ -43,10 +38,8 @@
               | {{ event.startTimeMinutes | formatTime(timeFormat) }}
               span(v-html="' ' + (event.title || event.content)")
 
-      div(v-if="view === 'month' && !eventsOnMonthView && events.length")
-        slot(name="events-count-month-view" :events="events")
-          span.vuecal__cell-events-count(v-if="events.length") {{ events.length }}
-    .vuecal__now-line(v-if="timelineVisible" :style="`top: ${todaysTimePosition}px`")
+      slot(v-if="view === 'month' && !eventsOnMonthView && events.length" name="events-count-month-view" :events="events")
+    .vuecal__now-line(v-if="timelineVisible" :style="`top: ${todaysTimePosition}px`" :key="transitions ? `${view}-now-line` : 'now-line'")
 </template>
 
 <script>
@@ -232,20 +225,6 @@ export default {
       })
     },
 
-    onEventTitleBlur (e, event) {
-      event.title = e.target.innerHTML
-
-      if (event.linked.daysCount) {
-        event.linked.forEach(e => {
-          let dayToModify = this.$parent.mutableEvents[e.date]
-          dayToModify.find(e2 => e2.id === e.id).title = event.title
-        })
-      }
-
-      this.$parent.emitWithEvent('event-change', event)
-      this.$parent.emitWithEvent('event-title-change', event)
-    },
-
     onResizeEvent () {
       let { eventId, newHeight } = this.$parent.domEvents.resizeAnEvent
       let event = this.events.filter(e => e.id === eventId)[0]
@@ -427,6 +406,12 @@ export default {
       this.$nextTick(() => this.checkCellOverlappingEvents())
       return this.$parent.noEventOverlaps
     },
+    transitions () {
+      return this.$parent.transitions
+    },
+    transitionDirection () {
+      return this.$parent.transitionDirection
+    },
     domEvents: {
       get () {
         if (this.$parent.domEvents.resizeAnEvent.eventId) this.onResizeEvent()
@@ -437,7 +422,7 @@ export default {
       }
     },
     cellStyles () {
-      return { minWidth: this.view === 'week' && this.$parent.minCellWidth ? `${this.$parent.minCellWidth}px` : null }
+      return { minWidth: this.view === 'week' && this.$parent.minCellWidth ? `${this.$parent.minCellWidth}px` : null, position: 'relative' }
     },
     events: {
       get () {
@@ -507,21 +492,21 @@ export default {
   align-items: center;
   text-align: center;
   position: relative;
-  .vuecal--month-view &,
-  .vuecal--week-view &,
-  .vuecal--day-view & {
+  .vuecal__cells.month-view &,
+  .vuecal__cells.week-view &,
+  .vuecal__cells.day-view & {
     width: 14.2857%;
   }
 
-  .vuecal--hide-weekends.vuecal--month-view &,
-  .vuecal--hide-weekends.vuecal--week-view &,
-  .vuecal--hide-weekends.vuecal--day-view & {
+  .vuecal--hide-weekends .vuecal__cells.month-view &,
+  .vuecal--hide-weekends .vuecal__cells.week-view &,
+  .vuecal--hide-weekends .vuecal__cells.day-view & {
     width: 20%;
   }
 
-  .vuecal--years-view & {width: 20%;}
-  .vuecal--year-view & {width: 33.33%;}
-  .vuecal--day-view & {flex: 1;}
+  .vuecal__cells.years-view & {width: 20%;}
+  .vuecal__cells.year-view & {width: 33.33%;}
+  .vuecal__cells.day-view & {flex: 1;}
 
   .vuecal--click-to-navigate & {cursor: pointer;}
   .vuecal--view-with-time &,
@@ -565,9 +550,7 @@ export default {
     .vuecal--day-view & {background: none;}
   }
 
-  &.out-of-scope {
-    color: #ccc;
-  }
+  &.out-of-scope {color: #ccc;}
 
   &-events-count {
     background: #999;
@@ -578,14 +561,22 @@ export default {
     transform: translateX(-50%);
     width: 12px;
     height: 12px;
-    margin-top: -1px;
+    margin-top: 13px;
     line-height: 12px;
     font-size: 10px;
   }
 
-  .vuecal--events-on-month-view &-content {
+  &-content {
     width: 100%;
+    height: 100%;
+    align-items: center;
+
+    .vuecal--years-view &,
+    .vuecal--year-view &,
+    .vuecal--month-view & {justify-content: center;}
   }
+
+  &-events {width: 100%;}
 }
 
 .vuecal--split-days.vuecal--week-view .vuecal__cell.splitted {
@@ -595,7 +586,8 @@ export default {
 .vuecal__no-event {
   padding-top: 1em;
   color: #aaa;
-  user-select: none;
+  justify-self: flex-start;
+  margin-bottom: auto; // Vertical align top within flex column and align center.
 }
 
 // EVENTS.
@@ -617,8 +609,6 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-
-    // &:hover {height: auto !important;}
   }
 
   &--overlapped {right: 20%;}
